@@ -7,6 +7,9 @@
   <groupId>com.quan.springcloud2020</groupId>
   <artifactId>springcloud2020</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>cloud-provider-payment8001</module>
+  </modules>
   <packaging>pom</packaging>
 
   <!-- 统一管理jar包版本 -->
