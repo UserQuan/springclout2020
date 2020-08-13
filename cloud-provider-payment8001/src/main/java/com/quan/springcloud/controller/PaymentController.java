@@ -5,6 +5,7 @@ import com.quan.springcloud.entities.PaymentDO;
 import com.quan.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @RequestMapping("/createPayment")
-    public CommonResult createPayment(PaymentDO paymentDO) {
+    public CommonResult createPayment(@RequestBody PaymentDO paymentDO) {
         int reslut = paymentService.createPayment(paymentDO);
         if (reslut > 0) {
             return new CommonResult("200", "success", reslut);
