@@ -1,0 +1,13 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    consul:
+      host:  localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        hostname: 192.168.1.107 #解决docker启动consul注册后又红叉，需要加上本机ip
