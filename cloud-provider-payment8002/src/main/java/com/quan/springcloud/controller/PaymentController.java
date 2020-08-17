@@ -5,15 +5,12 @@ import com.quan.springcloud.entities.PaymentDO;
 import com.quan.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @description:
@@ -31,16 +28,13 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-    @Resource
-    private DiscoveryClient discoveryClient;
-
     @RequestMapping("/createPayment")
     public CommonResult createPayment(@RequestBody PaymentDO paymentDO) {
         int reslut = paymentService.createPayment(paymentDO);
         if (reslut > 0) {
             return new CommonResult("200", "success,serverPort="+serverPort, reslut);
         } else {
-            return new CommonResult("444", "failed,serverPort="+serverPort, null);
+            return new CommonResult("444", "failed", null);
         }
     }
 
@@ -55,21 +49,5 @@ public class PaymentController {
         }else{
             return new CommonResult("444","没有对应记录,查询ID: "+id,null);
         }
-    }
-
-    @RequestMapping("/discovery")
-    public Object discovery(){
-
-        List<String> services = discoveryClient.getServices();
-        for (String s : services) {
-            log.info("*****s===" + s);
-        }
-
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        for (ServiceInstance instance : instances) {
-            log.info(instance.getServiceId() + "\t"+instance.getHost()+"\t"+
-                    instance.getPort()+"\t"+instance.getUri());
-        }
-        return this.discoveryClient;
     }
 }

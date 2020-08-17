@@ -6,12 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @description: http调用
+ * @description:
  * @author: 厚浪
- * @create: 2020-08-13 01:57
+ * @create: 2020-08-18 01:07
  **/
 @Configuration
-public class ApplicationContextConfig {
+public class ApplicationContextBean {
+
     @Bean
     @LoadBalanced
     public RestTemplate getRestTemplate(){

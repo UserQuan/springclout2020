@@ -18,7 +18,12 @@ import javax.annotation.Resource;
 //@RequestMapping("/consumer")
 public class OrderConroller {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    //单机
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+
+    //集群
+    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
+
     @Resource
     private RestTemplate restTemplate;
 
