@@ -2,12 +2,18 @@ package com.quan.springcloud.controller;
 
 import com.quan.springcloud.common.CommonResult;
 import com.quan.springcloud.entities.PaymentDO;
+import com.quan.springcloud.lb.LoadBalancer;
+import com.quan.springcloud.lb.MyLB;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 /**
  * @description:
@@ -28,6 +34,12 @@ public class OrderConroller {
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private LoadBalancer loadBalancer;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @RequestMapping("/consumer/payment/createPayment")
     public CommonResult<PaymentDO> create( PaymentDO paymentDO) {
         return restTemplate.postForObject(PAYMENT_URL + "/payment/createPayment", paymentDO, CommonResult.class);
@@ -43,6 +55,19 @@ public class OrderConroller {
     {
         ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL+"/payment/getPaymentById/"+id,CommonResult.class);
         return entity.getBody();
+    }
+
+    @GetMapping(value = "/consumer/payment/lb")
+    public String getPaymentLB(){
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+
+        if (instances == null || instances.size() < 0) {
+            return null;
+        }
+        ServiceInstance serviceInstance = loadBalancer.instances(instances);
+        URI uri = serviceInstance.getUri();
+        return restTemplate.getForObject(uri+"/payment/lb",String.class);
+
     }
 
 

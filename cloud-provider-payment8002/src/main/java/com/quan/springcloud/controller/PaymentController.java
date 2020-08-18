@@ -5,10 +5,7 @@ import com.quan.springcloud.entities.PaymentDO;
 import com.quan.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -49,5 +46,11 @@ public class PaymentController {
         }else{
             return new CommonResult("444","没有对应记录,查询ID: "+id,null);
         }
+    }
+
+    @GetMapping(value = "/lb")
+    public String getPaymentLB()
+    {
+        return serverPort;
     }
 }
