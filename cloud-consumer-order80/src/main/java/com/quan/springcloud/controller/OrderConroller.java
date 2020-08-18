@@ -3,6 +3,7 @@ package com.quan.springcloud.controller;
 import com.quan.springcloud.common.CommonResult;
 import com.quan.springcloud.entities.PaymentDO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -37,6 +38,12 @@ public class OrderConroller {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/getPaymentById/" + id, CommonResult.class);
     }
 
+    @GetMapping("/consumer/payment/getForEntity/{id}")
+    public CommonResult<PaymentDO> getPayment2(@PathVariable("id") Long id)
+    {
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL+"/payment/getPaymentById/"+id,CommonResult.class);
+        return entity.getBody();
+    }
 
 
 }
