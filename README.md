@@ -13,7 +13,7 @@ springcloud练习搭建
 小结: eureka AP zookeeper CP  consul CP  
 10 hystrix服务降级，消费方和提供方，单个方法降级和全局降级 熔断
 11 HystrixDashboard图形化监控页面 http://localhost:9001/hystrix  http://localhost:8001/hystrix.stream
-
+12 gateway
 
 
 
