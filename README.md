@@ -15,7 +15,7 @@ springcloud练习搭建
 11 HystrixDashboard图形化监控页面 http://localhost:9001/hystrix  http://localhost:8001/hystrix.stream
 12 gateway 动态路由配置，predicate,GlobalFilter全局过滤器
 13 config配置中心3344，通过GitHub获取
-
+14 config客户端搭建，通过3344config center中心调用github,但是客户端不支持动态刷新
 
 
 配置eureka集群，修改本地host
