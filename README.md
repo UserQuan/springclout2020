@@ -16,6 +16,10 @@ springcloud练习搭建
 12 gateway 动态路由配置，predicate,GlobalFilter全局过滤器
 13 config配置中心3344，通过GitHub获取
 14 config客户端搭建，通过3344config center中心调用github,但是客户端不支持动态刷新
+15 config客户端，手动版动态获取，添加配置后，如果修改配置，需要刷新配置客户端 curl -X POST "http://localhost:3355/actuator/refresh"
+
+
+
 
 
 配置eureka集群，修改本地host
