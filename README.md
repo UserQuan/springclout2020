@@ -14,12 +14,13 @@ springcloud练习搭建
 10 hystrix服务降级，消费方和提供方，单个方法降级和全局降级 熔断
 11 HystrixDashboard图形化监控页面 http://localhost:9001/hystrix  http://localhost:8001/hystrix.stream
 12 gateway 动态路由配置，predicate,GlobalFilter全局过滤器
-
+13 config配置中心3344，通过GitHub获取
 
 
 
 配置eureka集群，修改本地host
-##################SpringCloud#######
+##################SpringCloud####### C:\Windows\System32\Drivers\etc 下的host文件
 127.0.0.1       eureka7001.com
 127.0.0.1       eureka7002.com
 127.0.0.1       eureka7003.com
+127.0.0.1       config-3344.com
