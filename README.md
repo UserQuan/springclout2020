@@ -20,7 +20,7 @@ springcloud练习搭建
 16 bus消息总线配合config，实现广播刷新，修改GitHub，然后post http://localhost:3344/actuator/bus-refresh刷新3344服务中心，然后广播3355 3366 统一刷新，不用像上面手动挨个刷新
 17 bus消息定点通知，比如只通知3355 http://localhost:3344/actuator/bus-refresh/config-client:3355
 18 stream 消息驱动，整合多种消息中间件在系统中，搭建stream提供者和消费者，通过stream发送消息到MQ和通过stream消费消息
-
+19 stream 分组，持久化 通过group: quanA实现多个队列分为一个组，避免重复消费
 
 配置eureka集群，修改本地host
 ##################SpringCloud####### C:\Windows\System32\Drivers\etc 下的host文件
