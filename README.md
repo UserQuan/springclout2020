@@ -21,6 +21,19 @@ springcloud练习搭建
 17 bus消息定点通知，比如只通知3355 http://localhost:3344/actuator/bus-refresh/config-client:3355
 18 stream 消息驱动，整合多种消息中间件在系统中，搭建stream提供者和消费者，通过stream发送消息到MQ和通过stream消费消息
 19 stream 分组，持久化 通过group: quanA实现多个队列分为一个组，避免重复消费
+20 sleuth需要配合zipkin使用，下面docker搭建zipkin,sleuth负责监控，整理，zipkin负责展现
+    docker pull openzipkin/zipkin; 
+    docker run -d --restart always -p 9411:9411 --name zipkin openzipkin/zipkin ;
+    http://ip:9411/zipkin/
+    cunsumer80和provider8001 sleuth配置
+   
+    
+    
+
+
+
+
+
 
 配置eureka集群，修改本地host
 ##################SpringCloud####### C:\Windows\System32\Drivers\etc 下的host文件

@@ -84,4 +84,11 @@ public class PaymentController {
         try { TimeUnit.SECONDS.sleep(3); } catch (InterruptedException e) { e.printStackTrace(); }
         return serverPort;
     }
+
+    @GetMapping("/zipkin")
+    public String paymentZipkin()
+    {
+        return "hi ,i'am paymentzipkin server fall back，welcome to quanquan，O(∩_∩)O哈哈~";
+    }
+
 }
