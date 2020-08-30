@@ -17,7 +17,7 @@ springcloud练习搭建
 13 config配置中心3344，通过GitHub获取
 14 config客户端搭建，通过3344config center中心调用github,但是客户端不支持动态刷新
 15 config客户端，手动版动态获取，添加配置后，如果修改配置，需要刷新配置客户端 curl -X POST "http://localhost:3355/actuator/refresh"
-
+16 bus消息总线配合config，实现广播刷新，修改GitHub，然后post http://localhost:3344/actuator/bus-refresh刷新3344服务中心，然后广播3355 3366 统一刷新，不用像上面手动挨个刷新
 
 
 
@@ -28,3 +28,11 @@ springcloud练习搭建
 127.0.0.1       eureka7002.com
 127.0.0.1       eureka7003.com
 127.0.0.1       config-3344.com
+
+
+######docker  环境搭建
+#### rabbitmq
+docker pull  rabbitmq:3.8.7-management
+docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:3.8.7-management
+http://localhost:15672/  guest guest
+#### rabbitmq
