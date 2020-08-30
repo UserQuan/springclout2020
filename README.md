@@ -26,10 +26,12 @@ springcloud练习搭建
     docker run -d --restart always -p 9411:9411 --name zipkin openzipkin/zipkin ;
     http://ip:9411/zipkin/
     cunsumer80和provider8001 sleuth配置
-   
-    
-    
-
+######################  SpingCloud Alibaba start   ###########################
+21 
+    docker 搭建nacos服务
+    nacos 服务提供者9001，9002搭建  
+    可选，不想搭建9002情况下，在9001基础上copy configuration快速搭建一个虚拟映射服务，添加 -DServer.port=9011 参数，  
+ 
 
 
 
