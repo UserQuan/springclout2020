@@ -19,7 +19,7 @@ springcloud练习搭建
 15 config客户端，手动版动态获取，添加配置后，如果修改配置，需要刷新配置客户端 curl -X POST "http://localhost:3355/actuator/refresh"
 16 bus消息总线配合config，实现广播刷新，修改GitHub，然后post http://localhost:3344/actuator/bus-refresh刷新3344服务中心，然后广播3355 3366 统一刷新，不用像上面手动挨个刷新
 17 bus消息定点通知，比如只通知3355 http://localhost:3344/actuator/bus-refresh/config-client:3355
-
+18 stream 消息驱动，整合多种消息中间件在系统中，搭建stream提供者和消费者，通过stream发送消息到MQ和通过stream消费消息
 
 
 配置eureka集群，修改本地host
