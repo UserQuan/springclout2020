@@ -32,7 +32,8 @@ springcloud练习搭建
     nacos 服务提供者9001，9002搭建  
     可选，不想搭建9002情况下，在9001基础上copy configuration快速搭建一个虚拟映射服务，添加 -DServer.port=9011 参数，  
 22 nacos 服务消费者83
-
+23  nacos config配置中心3377
+    nacos分组配置 dataid group namespace
 
 
 
